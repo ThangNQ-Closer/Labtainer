@@ -23,3 +23,16 @@ git remote add origin GITHUB_REPOSITORY_URL
 git push -u origin main
 ```
 
+## IModule
+
+Publish the Labtainer IModule archive as:
+
+```text
+vp9-parity-coeff-stego.tar
+```
+
+The student install command is:
+
+```bash
+imodule https://raw.githubusercontent.com/ThangNQ-Closer/Labtainer/main/vp9-parity-coeff-stego.tar
+```

@@ -8,7 +8,9 @@ ARG user_name=student
 ARG password=password123
 ARG apt_source
 ARG version=1
+ARG base=labtainers/labtainer.base2.739eee77f8d3
 LABEL version=$version
+LABEL base=$base
 LABEL lab_base="labtainer.base2"
 ENV APT_SOURCE $apt_source
 RUN /usr/bin/apt-source.sh || true

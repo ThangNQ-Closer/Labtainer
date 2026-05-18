@@ -32,7 +32,7 @@ Recommended IModule install:
 
 ```bash
 cd ~/labtainer/trunk/scripts/labtainer-student
-imodule https://raw.githubusercontent.com/ThangNQ-Closer/Labtainer/main/imodule.tar
+imodule https://raw.githubusercontent.com/ThangNQ-Closer/Labtainer/main/vp9-parity-coeff-stego.tar
 labtainer vp9-parity-coeff-stego
 ```
 
