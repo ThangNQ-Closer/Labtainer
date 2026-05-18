@@ -28,6 +28,16 @@ config/          Labtainer metadata
 
 ## Run with Labtainer
 
+Recommended IModule install:
+
+```bash
+cd ~/labtainer/trunk/scripts/labtainer-student
+imodule https://raw.githubusercontent.com/ThangNQ-Closer/Labtainer/main/imodule.tar
+labtainer vp9-parity-coeff-stego
+```
+
+Manual install:
+
 Copy this directory to:
 
 ```bash
@@ -129,10 +139,16 @@ Y - labtainer_outputs_ready
 
 ## Docker image names
 
-Recommended Docker Hub tags:
+Standalone Docker Compose tags:
 
 ```text
-YOUR_DOCKERHUB_USERNAME/vp9-parity-coeff-stego-sender:latest
-YOUR_DOCKERHUB_USERNAME/vp9-parity-coeff-stego-analyst:latest
+closer031004/vp9-parity-coeff-stego-sender:latest
+closer031004/vp9-parity-coeff-stego-analyst:latest
 ```
 
+Labtainer pull tags:
+
+```text
+closer031004/vp9-parity-coeff-stego.sender.student:latest
+closer031004/vp9-parity-coeff-stego.analyst.student:latest
+```
