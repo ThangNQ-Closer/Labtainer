@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng dẫn thực hành - VP9 Directed Parity Coefficient Steganography</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.8; color: #1a1a1a; background: #f4f6f9; padding: 30px 20px; }
+    .page { max-width: 860px; margin: 0 auto; background: #fff; padding: 50px 60px; border: 1px solid #d0d5dd; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .header { text-align: center; border-bottom: 3px solid #003087; padding-bottom: 20px; margin-bottom: 30px; }
+    .header .institution { font-size: 11pt; color: #555; text-transform: uppercase; letter-spacing: 1px; }
+    .header h1 { font-size: 20pt; color: #003087; margin-top: 8px; font-weight: bold; }
+    .header .subtitle { font-size: 13pt; color: #444; margin-top: 4px; font-style: italic; }
+    .header .meta { margin-top: 14px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 10pt; font-weight: bold; }
+    .badge-medium { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+    .badge-tool { background: #e6f4ea; color: #216e39; border: 1px solid #b7dfc4; }
+    .badge-forensic { background: #e8f4fd; color: #0b5394; border: 1px solid #90caf9; }
+    h2 { font-size: 14pt; color: #003087; border-left: 5px solid #003087; padding-left: 10px; margin: 32px 0 12px; font-weight: bold; }
+    h3 { font-size: 12.5pt; color: #1a5276; margin: 10px 0 8px; font-weight: bold; }
+    p { margin-bottom: 10px; }
+    ul, ol { margin: 8px 0 10px 24px; }
+    li { margin-bottom: 5px; }
+    code { background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; padding: 2px 7px; font-family: "Courier New", monospace; font-size: 11pt; color: #b03a2e; }
+    pre { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px 20px; font-family: "Courier New", monospace; font-size: 10.5pt; overflow-x: auto; margin: 10px 0 14px; line-height: 1.6; white-space: pre-wrap; }
+    pre .cmd { color: #89dceb; }
+    .box { border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: 12pt; }
+    .box-info { background: #e8f4fd; border-left: 5px solid #2196f3; }
+    .box-warning { background: #fff3cd; border-left: 5px solid #ffc107; }
+    .box-danger { background: #fdecea; border-left: 5px solid #f44336; }
+    .box-success { background: #e8f5e9; border-left: 5px solid #4caf50; }
+    .topology { text-align: center; margin: 18px 0; }
+    .topo-diagram { display: inline-flex; align-items: center; gap: 0; background: #f8fafc; border: 1px solid #cdd0d8; border-radius: 10px; padding: 24px 32px; font-family: "Courier New", monospace; font-size: 11pt; }
+    .topo-node { background: #003087; color: #fff; border-radius: 8px; padding: 14px 18px; text-align: center; min-width: 170px; }
+    .node-label { font-size: 10pt; opacity: .9; }
+    .node-ip { font-size: 9pt; opacity: .75; font-style: italic; }
+    .topo-arrow { display: flex; flex-direction: column; align-items: center; margin: 0 20px; gap: 8px; }
+    .arrow-label { font-size: 9.5pt; font-weight: bold; color: #c0392b; }
+    .task-block { border: 1px solid #b0c4de; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .task-header { background: #003087; color: #fff; padding: 10px 18px; font-size: 12.5pt; font-weight: bold; }
+    .task-body { padding: 14px 18px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12pt; }
+    th { background: #003087; color: #fff; padding: 10px 12px; text-align: left; }
+    td { padding: 9px 12px; border: 1px solid #d0d5dd; vertical-align: top; }
+    tr:nth-child(even) td { background: #f5f7fa; }
+    .footer { margin-top: 40px; border-top: 1px solid #d0d5dd; padding-top: 14px; text-align: center; font-size: 10pt; color: #777; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="institution">Học viện Công nghệ Bưu chính Viễn thông — SecLab PTIT</div>
+      <h1>HƯỚNG DẪN THỰC HÀNH</h1>
+      <div class="subtitle">VP9 Directed Parity Coefficient Steganography</div>
+      <div class="meta"><span class="badge badge-medium">Mức độ: Trung bình</span><span class="badge badge-forensic">Digital Forensics</span><span class="badge badge-tool">Steganography</span></div>
+    </div>
+    <h2>1. Giới thiệu Lab</h2>
+    <table><tr><th>Thông tin</th><th>Chi tiết</th></tr><tr><td>Tên Lab</td><td><code>vp9-parity-coeff-stego</code></td></tr><tr><td>Chủ đề</td><td>Giấu tin trong hệ số biến đổi lượng tử hóa kiểu VP9 bằng Directed Parity Coding</td></tr><tr><td>Container</td><td><code>sender</code>, <code>analyst</code></td></tr><tr><td>Payload</td><td><code>DEFENSIVE-LAB-PAYLOAD-ONLY</code></td></tr><tr><td>Công cụ</td><td><code>python3</code>, <code>csv</code>, <code>json</code>, <code>/shared</code>, <code>checkwork</code></td></tr></table>
+    <h3>Mục tiêu học tập</h3>
+    <ul><li>Hiểu cấu trúc dữ liệu coefficient mô phỏng tầng <code>quantized transform coefficients</code> của VP9.</li><li>Phân biệt <code>c0</code> là DC coefficient và <code>c1..c15</code> là AC coefficients.</li><li>Nhúng bit bằng parity của <code>abs(coef) % 2</code> trên AC coefficients đủ điều kiện.</li><li>So sánh LSB/parity đơn giản với Directed Parity Coding ưu tiên giảm trị tuyệt đối.</li><li>Trích xuất thông điệp từ header 32-bit length và payload bytes.</li><li>Phân tích forensic: số hệ số bị đổi, phân bố parity, magnitude change, zero-to-nonzero, nonzero-to-zero và DC unchanged.</li></ul>
+    <h2>2. Kịch bản</h2>
+    <p><strong>Tình huống:</strong> Một nhóm phân tích an toàn thông tin phát hiện một tập hệ số biến đổi lượng tử hóa nghi vấn từ video VP9. Tập dữ liệu này không phải video WebM thật, mà là dữ liệu mô phỏng miền coefficient sau biến đổi và lượng tử hóa.</p>
+    <p><strong>Vấn đề:</strong> Dữ liệu bí mật có thể được nhúng bằng Directed Parity Coding. Thuật toán lưu bit bằng parity của trị tuyệt đối hệ số, nhưng khi cần sửa hệ số, nó ưu tiên đi về phía giảm magnitude: <code>4 → 3</code>, <code>-4 → -3</code>. Cách này giảm xu hướng tăng năng lượng bất thường so với cách sửa parity tùy ý.</p>
+    <p><strong>Vai trò:</strong> Sinh viên đóng vai <code>sender</code> để tạo cover, nhúng và trích xuất payload; sau đó đóng vai <code>analyst</code> để phân tích dấu vết forensic.</p>
+    <div class="topology"><div class="topo-diagram"><div class="topo-node"><div style="font-weight:bold; font-size:11pt;">Sender</div><div class="node-label">Embedding / Extraction</div><div class="node-ip">/home/student</div></div><div class="topo-arrow"><div class="arrow-label">/shared</div><svg width="110" height="16" viewBox="0 0 110 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="8" x2="95" y2="8" stroke="#c0392b" stroke-width="2"/><polygon points="95,3 110,8 95,13" fill="#c0392b"/></svg><div class="arrow-label">CSV / JSON artifacts</div></div><div class="topo-node"><div style="font-weight:bold; font-size:11pt;">Analyst</div><div class="node-label">Forensic Reports</div><div class="node-ip">/home/student</div></div></div></div>
+    <h2>3. Kiến thức bổ trợ</h2>
+    <ul><li><code>c0</code> là DC coefficient, biểu diễn thành phần trung bình của block và không được sửa trong lab.</li><li><code>c1..c15</code> là AC coefficients, biểu diễn các thành phần biến thiên cao hơn và là vùng ứng viên để nhúng.</li><li>Coefficient bằng <code>0</code> bị bỏ qua để không tạo dấu vết zero-to-nonzero.</li><li>Coefficient có <code>abs(coef) &lt;= min_abs</code> bị bỏ qua để tránh biến hệ số nhỏ thành 0.</li></ul>
+    <table><tr><th>Trường hợp</th><th>Hành động</th><th>Ý nghĩa forensic</th></tr><tr><td>Parity đã khớp bit</td><td>Giữ nguyên hệ số</td><td>Không tạo thay đổi không cần thiết</td></tr><tr><td><code>4</code> cần bit <code>1</code></td><td><code>4 → 3</code></td><td>Đổi parity và giảm magnitude</td></tr><tr><td><code>-4</code> cần bit <code>1</code></td><td><code>-4 → -3</code></td><td>Đổi parity và giảm <code>abs(coef)</code></td></tr><tr><td><code>1</code> hoặc <code>-1</code></td><td>Bỏ qua</td><td>Tránh nonzero-to-zero</td></tr></table>
+    <h2>4. Các nhiệm vụ của bài thực hành</h2>
+    <div class="box box-warning"><strong>Quy tắc chung:</strong> Sinh viên phải chạy từng script bằng <code>python3</code>, đọc output và kiểm tra JSON report. Không chạy một script tổng hợp duy nhất. Không chỉnh sửa video VP9/WebM thật.</div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 1 — Tạo cover coefficients</div><div class="task-body"><pre><span class="cmd">python3 make_coefficients.py --output cover_coeffs.csv --frames 30 --blocks-per-frame 120</span>
+<span class="cmd">cp cover_coeffs.csv /shared/</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong> File <code>cover_coeffs.csv</code> có đủ cột metadata và <code>c0..c15</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 2 — Inspect cấu trúc coefficient CSV</div><div class="task-body"><pre><span class="cmd">python3 inspect_coeffs.py --input cover_coeffs.csv --output coeff_info.json</span>
+<span class="cmd">cp coeff_info.json /shared/</span></pre><div class="box box-danger"><strong>Câu hỏi:</strong> Vì sao không nên nhúng dữ liệu vào DC coefficient?</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 3 — Nhúng payload bằng Directed Parity</div><div class="task-body"><pre><span class="cmd">python3 parity_embed.py --infile cover_coeffs.csv --outfile stego_parity.csv --message "DEFENSIVE-LAB-PAYLOAD-ONLY" --min-abs 2</span>
+<span class="cmd">cp stego_parity.csv embed_report.json /shared/</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong> <code>embedded_bits &gt; 0</code>, <code>changed_ac &gt; 0</code>, <code>dc_changed = 0</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 4 — Trích xuất thông điệp</div><div class="task-body"><pre><span class="cmd">python3 parity_extract.py --infile stego_parity.csv --output extract_report.json --min-abs 2</span>
+<span class="cmd">cp extract_report.json /shared/</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong> <code>success = true</code>, <code>extracted_message = DEFENSIVE-LAB-PAYLOAD-ONLY</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 5 — So sánh cover và stego</div><div class="task-body"><pre><span class="cmd">python3 compare_coeffs.py --cover /shared/cover_coeffs.csv --stego /shared/stego_parity.csv --output compare_report.json</span>
+<span class="cmd">cp compare_report.json /shared/</span></pre><div class="box box-info"><strong>Chỉ số cần đọc:</strong> <code>changed_ac</code>, <code>dc_changed</code>, <code>zero_to_nonzero</code>, <code>nonzero_to_zero</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 6 — Phân tích parity distribution</div><div class="task-body"><pre><span class="cmd">python3 parity_stats.py --infile /shared/stego_parity.csv --output parity_report.json</span>
+<span class="cmd">cp parity_report.json /shared/</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong> <code>even_ratio</code> và <code>odd_ratio</code> nằm trong khoảng <code>0..1</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 7 — Phân tích magnitude changes</div><div class="task-body"><pre><span class="cmd">python3 magnitude_stats.py --cover /shared/cover_coeffs.csv --stego /shared/stego_parity.csv --output magnitude_report.json</span>
+<span class="cmd">cp magnitude_report.json /shared/</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong> <code>dangerous_zero_created = 0</code>, <code>magnitude_decreased &gt;= magnitude_increased</code>.</div></div></div>
+    <div class="task-block"><div class="task-header">Nhiệm vụ 8 — Checkwork</div><div class="task-body"><pre><span class="cmd">checkwork</span></pre><div class="box box-success"><strong>Kết quả kỳ vọng:</strong><br />Y - coefficients_created<br />Y - coefficients_inspected<br />Y - parity_embedding_completed<br />Y - message_extracted<br />Y - magnitude_analyzed<br />Y - labtainer_outputs_ready</div></div></div>
+    <h2>5. Câu hỏi tổng kết</h2>
+    <ol><li>Directed Parity Coding khác gì so với LSB/parity embedding đơn giản?</li><li>Vì sao lab yêu cầu bỏ qua <code>c0</code>?</li><li>Vì sao thuật toán không được biến <code>1 → 0</code> hoặc <code>-1 → 0</code>?</li><li>Nếu <code>dc_changed &gt; 0</code>, điều đó cho thấy lỗi gì trong thuật toán?</li><li>Các chỉ số nào chứng minh stego vẫn để lại dấu vết forensic dù đã dùng directed parity?</li></ol>
+    <div class="footer"><p>Học viện Công nghệ Bưu chính Viễn thông — SecLab PTIT</p><p style="margin-top:4px">Bài thực hành local Labtainer về VP9-style coefficient-domain steganography, phục vụ mục tiêu học thuật và forensic defensive analysis.</p></div>
+  </div>
+</body>
+</html>

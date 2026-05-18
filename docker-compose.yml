@@ -1,0 +1,22 @@
+services:
+  sender:
+    image: YOUR_DOCKERHUB_USERNAME/vp9-parity-coeff-stego-sender:latest
+    container_name: vp9-parity-coeff-stego-sender
+    user: student
+    working_dir: /home/student
+    command: /bin/bash -lc "sleep infinity"
+    volumes:
+      - vp9_shared:/home/student/shared
+
+  analyst:
+    image: YOUR_DOCKERHUB_USERNAME/vp9-parity-coeff-stego-analyst:latest
+    container_name: vp9-parity-coeff-stego-analyst
+    user: student
+    working_dir: /home/student
+    command: /bin/bash -lc "sleep infinity"
+    volumes:
+      - vp9_shared:/home/student/shared
+
+volumes:
+  vp9_shared:
+

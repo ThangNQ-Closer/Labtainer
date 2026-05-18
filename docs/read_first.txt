@@ -1,0 +1,7 @@
+The lab manual is at
+file:///home/student/labtainer/trunk/labs/vp9-parity-coeff-stego/docs/vp9-parity-coeff-stego.html
+
+You may open these by right clicking
+and select "Open Link".
+
+Press <enter> to start the lab

@@ -1,0 +1,23 @@
+# Runtime outputs
+*.lab
+*.grades.txt
+*.log
+
+# Student-generated lab files
+cover_coeffs.csv
+stego_parity.csv
+coeff_info.json
+embed_report.json
+extract_report.json
+compare_report.json
+parity_report.json
+magnitude_report.json
+vp9_parity_checkwork.txt
+
+# Local/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+__pycache__/
+*.pyc
+

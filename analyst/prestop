@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir -p "$HOME/.local/result"
+if [ -x /usr/bin/python3 ] || command -v python3 >/dev/null 2>&1; then
+    python3 "$HOME/check.py" --base /shared > "$HOME/.local/result/vp9_parity_checkwork.txt" 2>&1 || true
+fi
